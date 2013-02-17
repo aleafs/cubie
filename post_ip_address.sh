@@ -4,7 +4,8 @@ export LANG=en_US.UTF-8
 
 declare -r __PWD__=$(pwd)
 declare -r __GIT__="/usr/bin/git"
-declare -r APPROOT=$(cd -- $(dirname -- $(readlink -- ${0})) && pwd)
+declare -r APPROOT="/home/linaro/work/cubie"
+#$(cd -- $(dirname -- $(readlink -- ${0})) && pwd)
 
 ipaddr() {
     local eth=$(/sbin/route -n | tail -n1 | awk '{print $NF}')
