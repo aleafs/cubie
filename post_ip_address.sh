@@ -21,7 +21,7 @@ getWanAddress() {
 }
 
 declare IPFILE="${APPROOT}/ip"
-cd "${APPROOT}" && \
+cd "${APPROOT}" && ${__GIT__} pull && \
     getLanAddress > ${IPFILE} && \
     getWanAddress >> ${IPFILE} && \
     ${__GIT__} add . && \
