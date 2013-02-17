@@ -6,7 +6,7 @@ declare -r __PWD__=$(pwd)
 declare -r __GIT__="/usr/bin/git"
 declare -r APPROOT=$(cd -- $(dirname -- ${0}) && pwd)
 
-if [ -f "${APPROOT}/`basename ${0}`.swp" ] ; then
+if [ -f "${APPROOT}/.`basename ${0}`.swp" ] ; then
     exit 0
 fi
 
@@ -20,7 +20,9 @@ getWanAddress() {
     sed 's/.*Current IP Address: \([0-9\.]*\).*/\1/g'
 }
 
-cd "${APPROOT}" && getLanAddress > ./ip && \
+cd "${APPROOT}" && \
+    getLanAddress > ./ip && \
+    getWanAddress >> ./ip && \
     ${__GIT__} add . && \
     ${__GIT__} commit -a -m "update ipaddress" && \
     ${__GIT__} push
