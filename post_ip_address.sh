@@ -12,6 +12,5 @@ ipaddr() {
     /sbin/ifconfig | grep -A1 "${eth}" | grep inet | awk '{print $2}' | cut -d":" -f2
 }
 
-ipaddr > "${APPROOT}/ip" && ${__GIT__} add . && ${__GIT__} commit -a -m "update ipaddress" && ${__GIT__} push
-
+cd "${APPROOT}" && ipaddr > ./ip && ${__GIT__} add . && ${__GIT__} commit -a -m "update ipaddress" && ${__GIT__} push
 cd ${__PWD__} && exit 0
