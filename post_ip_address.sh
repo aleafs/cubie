@@ -11,6 +11,10 @@ getLanAddress() {
     /sbin/ifconfig | grep -A1 "${eth}" | grep inet | awk '{print $2}' | cut -d":" -f2
 }
 
+getWanAddress() {
+    :
+}
+
 cd "${APPROOT}" && getLanAddress > ./ip && \
     ${__GIT__} add . && \
     ${__GIT__} commit -a -m "update ipaddress" && \
