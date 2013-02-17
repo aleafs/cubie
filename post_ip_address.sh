@@ -20,9 +20,10 @@ getWanAddress() {
     sed 's/.*Current IP Address: \([0-9\.]*\).*/\1/g'
 }
 
+declare IPFILE="${APPROOT}/ip"
 cd "${APPROOT}" && \
-    getLanAddress > ./ip && \
-    getWanAddress >> ./ip && \
+    getLanAddress > ${IPFILE} && \
+    getWanAddress >> ${IPFILE} && \
     ${__GIT__} add . && \
     ${__GIT__} commit -a -m "update ipaddress" && \
     ${__GIT__} push
